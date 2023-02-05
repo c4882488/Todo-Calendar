@@ -1,0 +1,68 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="form">
+        <div>
+            <label>姓名</label>
+            <input name="name" type="text" />
+        </div>
+        <div>
+            <label>性別</label>
+            <label>
+                <input type="radio" name="sex" value="male" />
+                男性
+            </label>
+            <label>
+                <input type="radio" name="sex" value="female" />
+                女性
+            </label>
+        </div>
+        <div>
+            <label>最高學歷</label>
+            <select name="education">
+                <option value="junior">國中</option>
+                <option value="senior">高中</option>
+                <option value="university">大學</option>
+            </select>
+        </div>
+        <div>
+            <label>自我介紹</label>
+            <textarea name="description"></textarea>
+        </div>
+        <div>
+            <label>個人圖片上傳</label>
+            <input type="file" id="fileInput" name="avatar" />
+        </div>
+        <div>
+            <label>送出按鈕</label>
+            <input type="submit" />
+        </div>
+    </form>
+</body>
+<script>
+    const form = document.getElementById("form");
+    form.addEventListener("submit", e => {
+        e.preventDefault();
+        const form = e.target;
+        const formData = {
+            name: form.name.value,
+            sex: form.sex.value,
+            education: form.education.value,
+            description: form.description.value,
+            avatar: form.avatar.files[0]
+        };
+
+        console.log("formData", formData);
+
+        form.reset();
+    })
+</script>
+
+</html>
